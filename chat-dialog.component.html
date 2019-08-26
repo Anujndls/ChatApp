@@ -1,0 +1,27 @@
+<div class="chat">
+    <div class="chat-title">
+        <h1>Muzi</h1>
+        <h2>Virtual Assistant</h2>
+        <figure class="avatar">
+            <img src="../../../assets/images/bot_mars.png" style="width:100%;height:auto;">
+        </figure>
+    </div>
+    <div style="overflow: auto; height: 400px;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <ng-container *ngFor="let message of messagess | async">
+
+            <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+                                          'to':   message.sentBy === 'user' }">
+                {{ message.content }}
+            </div>
+
+        </ng-container>
+    </div>
+    <div class="message-box">
+        <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" class="message-input"
+            placeholder="Type message....">
+        <a (click)="sendMessage()" type="submit" class="message-submit"> <img
+                src="https://getinstantbotdev.oneclick.info/Images/Buttons/samsungblue.png" style="width:30px;" /></a>
+    </div>
+
+</div>
+<div class="bg"></div>
